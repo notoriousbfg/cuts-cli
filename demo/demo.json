@@ -1,0 +1,81 @@
+{
+  "version": 1,
+  "name": "Grasmere in forty seconds",
+  "notes": "The cuts demo: a title card, four screen recordings joined with different transitions, captions tied to the clips they describe, and a picture-in-picture on a third track.",
+  "output": {
+    "path": "out/grasmere-demo.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "background": { "gradient": ["#23262f", "#0e0f13"], "angle": 60 }
+  },
+  "media": {
+    "journal": "../../grasmere-app-site/media/ending/draft-journal.mp4",
+    "reorder": "../../grasmere-app-site/media/ending/review-reorder.mp4",
+    "cards": "../../grasmere-app-site/media/ending/index-cards.mp4",
+    "cards-dark": "../../grasmere-app-site/media/ending-dark/index-cards.mp4",
+    "ask": "../../grasmere-app-site/media/ending/research-ask.mp4",
+    "serif": "../../grasmere-app-site/fonts/InstrumentSerif-normal-400.woff2"
+  },
+  "styles": {
+    "window": { "scale": 0.84, "position": [0.5, 0.47], "radius": 14, "shadow": { "blur": 60, "y": 24, "opacity": 0.5 } },
+    "caption": {
+      "font": "Helvetica Neue", "weight": "medium", "size": 34, "color": "#f4f1ea",
+      "position": [0.5, 0.945], "fadeIn": 0.35, "fadeOut": 0.35
+    }
+  },
+  "tracks": [
+    {
+      "id": "main",
+      "clips": [
+        {
+          "id": "title",
+          "text": [
+            { "text": "Grasmere", "fontFile": "../../grasmere-app-site/fonts/InstrumentSerif-normal-400.woff2", "size": 190 },
+            { "text": "A WRITING APP FOR THE MAC", "font": "Helvetica Neue", "weight": "medium", "size": 30, "tracking": 7, "color": "#f4f1ea99", "gap": 26 }
+          ],
+          "color": "#f4f1ea",
+          "duration": 3,
+          "fadeIn": 0.6
+        },
+        { "id": "journal", "src": "journal", "style": "window", "in": 2.6, "out": 10.4, "transition": { "type": "crossfade", "duration": 0.7 } },
+        { "id": "reorder", "src": "reorder", "style": "window", "in": 0.4, "out": 8.2, "transition": { "type": "slideleft", "duration": 0.6 } },
+        { "id": "cards", "src": "cards", "style": "window", "in": 2.2, "out": 10.6, "transition": { "type": "circleopen", "duration": 0.8 } },
+        { "id": "ask", "src": "ask", "style": "window", "in": 0.6, "out": 8.6, "speed": 1.25, "transition": { "type": "smoothup", "duration": 0.6 } },
+        {
+          "id": "outro",
+          "text": [
+            { "text": "Made with cuts", "fontFile": "../../grasmere-app-site/fonts/InstrumentSerif-normal-400.woff2", "size": 120 },
+            { "text": "tracks, titles and transitions from one JSON file", "font": "Helvetica Neue", "size": 32, "color": "#f4f1ea99", "gap": 22 }
+          ],
+          "color": "#f4f1ea",
+          "duration": 3,
+          "transition": { "type": "dip-to-black", "duration": 1 },
+          "fadeOut": 0.6
+        }
+      ]
+    },
+    {
+      "id": "inset",
+      "notes": "The same recording in the dark theme, as a picture-in-picture over the light one.",
+      "clips": [
+        {
+          "id": "cards-dark", "src": "cards-dark", "in": 2.2,
+          "start": "cards.start+2.2", "end": "cards.end-0.8",
+          "scale": 0.3, "position": [0.9, 0.88], "anchor": "bottom-right",
+          "radius": 10, "shadow": true,
+          "transition": { "type": "zoomin", "duration": 0.5 }, "fadeOut": 0.4
+        }
+      ]
+    },
+    {
+      "id": "captions",
+      "clips": [
+        { "style": "caption", "text": "A journal entry, started from the sidebar", "start": "journal.start+0.9", "end": "journal.end-0.8" },
+        { "style": "caption", "text": "Chapters dragged into a new order", "start": "reorder.start+0.8", "end": "reorder.end-0.9" },
+        { "style": "caption", "text": "Every note as a card, with its links", "start": "cards.start+1", "end": "cards.end-0.8" },
+        { "style": "caption", "text": "Questions answered from your own documents", "start": "ask.start+0.8", "end": "ask.end-1.2" }
+      ]
+    }
+  ]
+}
